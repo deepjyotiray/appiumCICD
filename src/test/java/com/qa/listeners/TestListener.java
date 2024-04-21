@@ -60,11 +60,19 @@ public class TestListener implements ITestListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ExtentReport.getTest().fail("Test Failed",
-				MediaEntityBuilder.createScreenCaptureFromPath(completeImagePath).build());
-		ExtentReport.getTest().fail("Test Failed",
-				MediaEntityBuilder.createScreenCaptureFromBase64String(new String(encoded, StandardCharsets.US_ASCII)).build());
-		ExtentReport.getTest().fail(result.getThrowable());
+        try {
+            ExtentReport.getTest().fail("Test Failed",
+                    MediaEntityBuilder.createScreenCaptureFromPath(completeImagePath).build());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            ExtentReport.getTest().fail("Test Failed",
+                    MediaEntityBuilder.createScreenCaptureFromBase64String(new String(encoded, StandardCharsets.US_ASCII)).build());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ExtentReport.getTest().fail(result.getThrowable());
 	}
 
 	@Override
