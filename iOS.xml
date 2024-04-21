@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="tests">
+    <test name="iPhone14ProMax">
+        <listeners>
+            <listener class-name="com.qa.listeners.TestListener" />
+        </listeners>
+        <parameter name="platformName" value="iOS" />
+        <parameter name="udid" value="23F4CCB1-37FB-49D1-A4EC-637F26482298" />
+        <parameter name="deviceName" value="iPhoneAutomation" />
+        <parameter name="wdaLocalPort" value="10001" />
+        <parameter name="webkitDebugProxyPort" value="11001" />
+        <classes>
+            <class name="com.qa.tests.LoginTests"/>
+            <class name="com.qa.tests.ProductTests"/>
+        </classes>
+    </test>
+</suite> <!-- Suite -->
